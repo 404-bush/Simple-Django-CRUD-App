@@ -1,0 +1,61 @@
+{% include 'base.html' %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+     <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}" >
+    <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}" >
+
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+  {%if messages %}
+        {% for message in messages %}
+            {{ message }}
+        {% endfor %}
+    {% endif %}
+
+ <div class="container">
+
+     <h1 style="padding-left:20px;color:brown;size: 50px;">Enter Details </h1><br><br>
+    <div class="form-group row">
+{#    <label class="col-sm-1 col-form-label"></label>#}
+
+<form method="POST">
+     {% csrf_token %}
+       <div class="form-group row">
+    <label class="col-sm-2 col-form-label">Name:</label>
+    <div class="col-sm-4">
+      {{ form.name }}
+    </div>
+    </div>
+       <div class="form-group row">
+    <label class="col-sm-2 col-form-label">Age:</label>
+    <div class="col-sm-4">
+      {{ form.age}}
+    </div>
+    </div>
+    <div class="form-group row">
+    <label class="col-sm-2 col-form-label">Email:</label>
+    <div class="col-sm-4">
+      {{ form.email }}
+    </div>
+    </div>
+     <div class="form-group row">
+    <label class="col-sm-2 col-form-label">Phone:</label>
+    <div class="col-sm-4">
+      {{ form.phone }}
+    </div>
+    </div>
+    <div class="form-group row">
+    <label class="col-sm-2 col-form-label">Branch:</label>
+    <div class="col-sm-4">
+      {{ form.branch }}
+    </div>
+    </div>
+     <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+</div>
+</body>
+</html>

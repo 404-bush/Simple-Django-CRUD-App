@@ -1,0 +1,44 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}" >
+    <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}" >
+</head>
+<body>
+{% if messages %}
+    {% for i in messages %}
+        {{ i }}
+    {% endfor %}
+{% endif %}
+    <table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">S.No</th>
+      <th scope="col">Name</th>
+      <th scope="col">Age</th>
+      <th scope="col">Email</th>
+      <th scope="col">Branch</th>
+      <th scope="col">Phone No</th>
+      <th scope="col">Action</th>
+    </tr>
+  </thead>
+
+  <tbody>
+  {%  for i in obj %}
+    <tr>
+{#      <th scope="row"></th>#}
+       <td>{{ forloop.counter }}</td>
+      <td>{{ i.name }}</td>
+      <td>{{ i.age }}</td>
+      <td>{{ i.email }}</td>
+      <td>{{ i.branch }}</td>
+      <td>{{ i.phone }}</td>
+      <td><button type="button" class="btn btn-primary" onclick="location.href='/update/{{ i.id }}' ">Update</button></td>
+      <td><button type="button" class="btn btn-danger" onclick="location.href='/delete/{{ i.id }}'">Delete</button></td>
+    </tr>
+  {% endfor %}
+  </tbody>
+</table>
+</body>
+</html>
